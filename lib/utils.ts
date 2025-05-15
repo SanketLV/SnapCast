@@ -73,7 +73,8 @@ export const apiFetch = async <T = Record<string, unknown>>(
   const response = await fetch(url, requestOptions);
 
   if (!response.ok) {
-    throw new Error(`API error ${response.text()}`);
+    const errorText = await response.text();
+    throw new Error(`API error ${errorText}`);
   }
 
   if (method === "DELETE" || !expectJson) {
