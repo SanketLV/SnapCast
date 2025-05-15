@@ -34,6 +34,7 @@ const FormField = ({
         <input
           id={id}
           name={id}
+          type={type}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
