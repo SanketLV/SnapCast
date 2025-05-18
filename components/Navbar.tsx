@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,6 +9,16 @@ import React from "react";
 const Navbar = () => {
   const user = {};
   const router = useRouter();
+
+  const handleLogOut = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/sign-in");
+        },
+      },
+    });
+  };
 
   return (
     <header className="navbar">
@@ -33,7 +44,7 @@ const Navbar = () => {
                 className="rounded-full aspect-square"
               />
             </button>
-            <button>
+            <button onClick={handleLogOut}>
               <Image
                 src="/assets/icons/logout.svg"
                 alt="Logout"
