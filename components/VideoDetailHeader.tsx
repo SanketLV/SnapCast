@@ -53,7 +53,11 @@ const VideoDetailHeader = ({
       </aside>
 
       <aside className="cta">
-        <button onClick={handleCopyLink}>
+        <button
+          aria-label={copied ? "Link copied" : "Copy link"}
+          title="Copy video link"
+          onClick={handleCopyLink}
+        >
           <Image
             src={
               copied ? "/assets/images/checked.png" : "/assets/icons/link.svg"
@@ -62,7 +66,9 @@ const VideoDetailHeader = ({
             width={24}
             height={24}
           />
+          <span className="sr-only">Copy link</span>
         </button>
+      </aside>
       </aside>
     </header>
   );
