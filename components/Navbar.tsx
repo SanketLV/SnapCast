@@ -7,8 +7,9 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 const Navbar = () => {
-  const user = {};
   const router = useRouter();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   const handleLogOut = async () => {
     await authClient.signOut({
@@ -35,13 +36,13 @@ const Navbar = () => {
 
         {user && (
           <figure>
-            <button onClick={() => router.push("/profile/123456")}>
+            <button onClick={() => router.push(`/profile/${user.id}`)}>
               <Image
-                src="/assets/images/dummy.jpg"
+                src={user.image || ""}
                 alt="User"
-                width={36}
-                height={36}
-                className="rounded-full aspect-square"
+                width={24}
+                height={24}
+                className="rounded-full"
               />
             </button>
             <button onClick={handleLogOut}>
