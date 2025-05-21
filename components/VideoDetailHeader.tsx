@@ -69,7 +69,6 @@ const VideoDetailHeader = ({
           <span className="sr-only">Copy link</span>
         </button>
       </aside>
-      </aside>
     </header>
   );
 };
