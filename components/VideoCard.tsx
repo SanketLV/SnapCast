@@ -35,7 +35,7 @@ const VideoCard = ({
               className="rounded-full aspect-square"
             />
             <figcaption>
-              <h3>{username}</h3>
+              <h3 className="capitalize">{username}</h3>
               <p>{visibility}</p>
             </figcaption>
           </figure>
